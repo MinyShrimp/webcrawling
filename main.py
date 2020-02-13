@@ -3,7 +3,7 @@ import webbrowser
 import requests
 import time
 
-from balloontip import balloon_tip
+from balloontip import WindowsBalloonTip, balloon_tip
 
 if __name__ == "__main__":
     _name = "김회민"
@@ -30,6 +30,7 @@ if __name__ == "__main__":
                 
                 if _first_start:
                     balloon_tip('{}님 환영합니다!!'.format(_name), '오늘 하루도 즐거운 하루 되세요.')
+                    _first_start = False
                 else:
                     balloon_tip('새로운 업무가 업데이트되었습니다.', '홈페이지를 확인해주세요.')
                 

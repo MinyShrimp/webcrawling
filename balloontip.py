@@ -8,8 +8,9 @@ import time
 class WindowsBalloonTip:
     def __init__(self, title, msg):
         message_map = {
-            win32con.WM_DESTROY: self.OnDestroy,
+                win32con.WM_DESTROY: self.OnDestroy,
         }
+        # Register the Window class.
         wc = WNDCLASS()
         hinst = wc.hInstance = GetModuleHandle(None)
         wc.lpszClassName = "PythonTaskbar"
@@ -25,7 +26,7 @@ class WindowsBalloonTip:
         icon_flags = win32con.LR_LOADFROMFILE | win32con.LR_DEFAULTSIZE
         try:
            hicon = LoadImage(hinst, iconPathName, \
-                win32con.IMAGE_ICON, 0, 0, icon_flags)
+                    win32con.IMAGE_ICON, 0, 0, icon_flags)
         except:
           hicon = LoadIcon(0, win32con.IDI_APPLICATION)
         flags = NIF_ICON | NIF_MESSAGE | NIF_TIP
@@ -35,15 +36,14 @@ class WindowsBalloonTip:
                          (self.hwnd, 0, NIF_INFO, win32con.WM_USER+20,\
                           hicon, "Balloon  tooltip",msg,200,title))
         # self.show_balloon(title, msg)
+        time.sleep(10)
         DestroyWindow(self.hwnd)
-    
+        UnregisterClass(classAtom, hinst)
+        
     def OnDestroy(self, hwnd, msg, wparam, lparam):
         nid = (self.hwnd, 0)
         Shell_NotifyIcon(NIM_DELETE, nid)
         PostQuitMessage(0) # Terminate the app.
 
 def balloon_tip(title, msg):
-    w = WindowsBalloonTip(title, msg)
-
-if __name__ == "__main__":
-    balloon_tip('새로운 업무가 등장했습니다.', '자세한건 사이트에서 확인하세요.')
+    w=WindowsBalloonTip(title, msg)
