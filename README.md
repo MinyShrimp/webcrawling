@@ -174,7 +174,7 @@ balloon_tip('새로운 업무가 업데이트되었습니다.', '홈페이지를
 이는 매우 간단하게 해결이 가능한데, while을 둘러주면 된다.
 ```python
 while True:
-    html = requests.get('http://iwork.hrcglobal.com/')
+    html = requests.get('http://') //url
     soup = BeautifulSoup(html.content, 'html.parser')
     trs = soup.select('#body > section > table:nth-child(4) > tr')
     try:
@@ -210,7 +210,7 @@ time.sleep(10) # 10초 동안 프로그램을 '멈춘다'
 ```python
 try:
     while True:
-        html = requests.get('http://iwork.hrcglobal.com/')
+        html = requests.get('http://') # url
         soup = BeautifulSoup(html.content, 'html.parser')
         trs = soup.select('#body > section > table:nth-child(4) > tr')
         try:
