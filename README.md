@@ -30,11 +30,7 @@ import requests
 >
 >만약, 당신이 개발해야되는 환경이 무언가를 불러오는 동적 웹사이트인 경우 **selenium** 쓰는게 편하다.
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 6d0211851cea1cfdffd895b031e1dffb2fa343a2
+<br>
 ## 웹사이트 접속
 우선, 크롤링하고 싶은 웹사이트에 접속해서 F12(Chrome)를 눌러 html을 확인해보자. Elements 탭에서 확인이 가능하다.
 
@@ -55,12 +51,7 @@ trs  = soup.select('') # ''안에 붙여넣기
 trs  = soup.select('#body > section > table:nth-child(4) > tr')
 ```
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 6d0211851cea1cfdffd895b031e1dffb2fa343a2
+<br>
 ## 크롤링
 먼저, 데이터 비교를 위한 2중 배열을 선언한다. 처음엔 아예 빈 문자열로 채워서 무조건 다르게 만들어 준다.
 
